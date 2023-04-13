@@ -2,3 +2,4 @@
 
 import "./Hero";
 import "./BlogList";
+import "./InternalLink";

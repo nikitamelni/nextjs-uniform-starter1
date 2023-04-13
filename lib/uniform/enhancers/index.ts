@@ -63,5 +63,8 @@ export default async function runEnhancers(
     context: {},
   });
 
+  // if you want to see the composition with enhanced values i.e. component data with data from CMS
+  // console.log('====compostion====== : ' + JSON.stringify(composition));
+
   return composition;
 }
