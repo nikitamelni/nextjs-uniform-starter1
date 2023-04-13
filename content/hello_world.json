@@ -1,0 +1,1609 @@
+{
+  "signals": [
+    {
+      "id": "launchCampaign",
+      "name": "Launch Campaign",
+      "cap": 100,
+      "crit": {
+        "op": "&",
+        "type": "G",
+        "clauses": [
+          {
+            "type": "QS",
+            "match": {
+              "cs": false,
+              "op": "=",
+              "rhs": "launch"
+            },
+            "queryName": "utm_campaign"
+          }
+        ]
+      },
+      "dur": "p",
+      "description": "",
+      "str": 50
+    }
+  ],
+  "components": [
+    {
+      "id": "algolia-basicComponents",
+      "name": "Basic Components",
+      "icon": "template",
+      "parameters": [
+        {
+          "id": "searchBoxParams",
+          "name": "Search Box Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Search Box"
+          }
+        },
+        {
+          "id": "refinementListParams",
+          "name": "Refinement List Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Refinement List"
+          }
+        },
+        {
+          "id": "hitsParams",
+          "name": "Hits Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Hits"
+          }
+        },
+        {
+          "id": "paginationParams",
+          "name": "Pagination Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Pagination"
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [
+        {
+          "id": "hitComponent",
+          "name": "hitComponent",
+          "maxComponents": 1,
+          "allowedComponents": [
+            "algolia-hit"
+          ],
+          "inheritAllowedComponents": false
+        }
+      ],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:12.192547+00:00",
+      "updated": "2023-03-29T17:39:12.192547+00:00"
+    },
+    {
+      "id": "algolia-hit",
+      "name": "Hit",
+      "icon": "play-list-search",
+      "parameters": [],
+      "useTeamPermissions": true,
+      "slots": [],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:12.212432+00:00",
+      "updated": "2023-03-29T17:39:12.212432+00:00"
+    },
+    {
+      "id": "algolia-hits",
+      "name": "Hits",
+      "icon": "play-list-search",
+      "parameters": [
+        {
+          "id": "hitsParams",
+          "name": "Hits Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Hits"
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [
+        {
+          "id": "hitComponent",
+          "name": "hitComponent",
+          "maxComponents": 1,
+          "allowedComponents": [
+            "algolia-hit"
+          ],
+          "inheritAllowedComponents": false
+        }
+      ],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:13.887182+00:00",
+      "updated": "2023-03-29T17:39:13.887182+00:00"
+    },
+    {
+      "id": "algolia-index",
+      "name": "Index",
+      "icon": "database",
+      "parameters": [
+        {
+          "id": "indexParams",
+          "name": "Index Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Index",
+            "indexConfiguration": {
+              "showOptionalParams": false
+            }
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [
+        {
+          "id": "widgets",
+          "name": "Widgets",
+          "allowedComponents": [
+            "algolia-hits",
+            "algolia-pagination",
+            "algolia-refinementList",
+            "algolia-searchBox",
+            "algolia-basicComponents"
+          ],
+          "inheritAllowedComponents": false
+        }
+      ],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:12.242007+00:00",
+      "updated": "2023-03-29T17:39:12.242007+00:00"
+    },
+    {
+      "id": "algolia-instantSearch",
+      "name": "Instant Search",
+      "icon": "search-found",
+      "parameters": [
+        {
+          "id": "instantSearchParams",
+          "name": "Instant Search Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Instant Search"
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [
+        {
+          "id": "widgets",
+          "name": "Widgets",
+          "allowedComponents": [
+            "algolia-searchBox",
+            "algolia-refinementList",
+            "algolia-hits",
+            "algolia-pagination",
+            "algolia-index",
+            "algolia-basicComponents"
+          ],
+          "inheritAllowedComponents": false
+        }
+      ],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:13.922487+00:00",
+      "updated": "2023-03-29T17:39:13.922487+00:00"
+    },
+    {
+      "id": "algolia-page",
+      "name": "Algolia Demo Page",
+      "icon": "file-document",
+      "parameters": [
+        {
+          "id": "metaTitle",
+          "name": "Meta Title",
+          "type": "text",
+          "helpText": "",
+          "typeConfig": {
+            "required": true
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [
+        {
+          "id": "providers",
+          "name": "Providers",
+          "allowedComponents": [
+            "algolia-instantSearch"
+          ],
+          "inheritAllowedComponents": false
+        }
+      ],
+      "canBeComposition": true,
+      "created": "2023-03-29T17:39:12.400811+00:00",
+      "updated": "2023-03-29T17:39:12.400811+00:00"
+    },
+    {
+      "id": "algolia-pagination",
+      "name": "Pagination",
+      "icon": "browser",
+      "parameters": [
+        {
+          "id": "paginationParams",
+          "name": "Pagination Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Pagination"
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:13.824618+00:00",
+      "updated": "2023-03-29T17:39:13.824618+00:00"
+    },
+    {
+      "id": "algolia-refinementList",
+      "name": "Refinement List",
+      "icon": "image-text",
+      "parameters": [
+        {
+          "id": "refinementListParams",
+          "name": "Refinement List Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Refinement List"
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:13.937559+00:00",
+      "updated": "2023-03-29T17:39:13.937559+00:00"
+    },
+    {
+      "id": "algolia-searchBox",
+      "name": "Search Box",
+      "icon": "search",
+      "parameters": [
+        {
+          "id": "searchBoxParams",
+          "name": "Search Box Parameters",
+          "type": "algolia-components",
+          "helpText": "",
+          "typeConfig": {
+            "selectedComponent": "Search Box"
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [],
+      "canBeComposition": false,
+      "created": "2023-03-29T17:39:13.875202+00:00",
+      "updated": "2023-03-29T17:39:13.875202+00:00"
+    },
+    {
+      "id": "blogList",
+      "name": "Blog list",
+      "icon": "screen",
+      "parameters": [
+        {
+          "id": "blogs",
+          "name": "Blogs",
+          "type": "contentstackQueryEntrySelector",
+          "helpText": "",
+          "typeConfig": {
+            "allowedContentTypes": {
+              "blog_post": {
+                "uid": "blog_post",
+                "title": "Blog Entry",
+                "schema": [
+                  {
+                    "uid": "title",
+                    "unique": true,
+                    "multiple": false,
+                    "data_type": "text",
+                    "mandatory": true,
+                    "display_name": "Title",
+                    "field_metadata": {
+                      "version": 3,
+                      "_default": true
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "url",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "text",
+                    "mandatory": false,
+                    "display_name": "URL",
+                    "field_metadata": {
+                      "version": 3,
+                      "_default": true
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "author",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "reference",
+                    "mandatory": true,
+                    "display_name": "Author",
+                    "reference_to": [
+                      "author"
+                    ],
+                    "field_metadata": {
+                      "ref_multiple": false,
+                      "ref_multiple_content_types": true
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "date",
+                    "unique": false,
+                    "endDate": null,
+                    "multiple": false,
+                    "data_type": "isodate",
+                    "mandatory": false,
+                    "startDate": null,
+                    "display_name": "Date",
+                    "field_metadata": {
+                      "date_range": false,
+                      "description": "Optional field that overrides the publishing date.",
+                      "default_value": {
+                        "date": "",
+                        "time": "",
+                        "custom": false
+                      }
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "featured_image",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "file",
+                    "dimension": {
+                      "width": {
+                        "max": null,
+                        "min": null
+                      },
+                      "height": {
+                        "max": null,
+                        "min": null
+                      }
+                    },
+                    "mandatory": true,
+                    "display_name": "Featured Image",
+                    "field_metadata": {
+                      "image": true,
+                      "description": "",
+                      "rich_text_type": "standard"
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "body",
+                    "format": "",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "json",
+                    "mandatory": false,
+                    "display_name": "Body",
+                    "reference_to": [
+                      "sys_assets"
+                    ],
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "field_metadata": {
+                      "options": [],
+                      "multiline": false,
+                      "description": "",
+                      "embed_entry": false,
+                      "default_value": "",
+                      "allow_json_rte": true,
+                      "rich_text_type": "advanced"
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "related_post",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "reference",
+                    "mandatory": false,
+                    "display_name": "Related Post",
+                    "reference_to": [
+                      "blog_post"
+                    ],
+                    "field_metadata": {
+                      "ref_multiple": true,
+                      "ref_multiple_content_types": true
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "is_archived",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "boolean",
+                    "mandatory": false,
+                    "display_name": "Is Archived?",
+                    "field_metadata": {
+                      "description": "",
+                      "default_value": false
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "seo",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "global_field",
+                    "mandatory": false,
+                    "display_name": "SEO",
+                    "reference_to": "seo",
+                    "field_metadata": {
+                      "description": ""
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "topic",
+                    "config": {},
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "json",
+                    "mandatory": false,
+                    "display_name": "Topic",
+                    "extension_uid": "blt1d9b146d2d93dc7c",
+                    "field_metadata": {
+                      "extension": true,
+                      "description": "The enrichments you select will help to identify the visitor's interests, which are used to create a personalized experience for the visitor."
+                    },
+                    "non_localizable": false
+                  }
+                ],
+                "SYS_ACL": {
+                  "roles": [
+                    {
+                      "uid": "blt8ee017ef4da63633",
+                      "read": true,
+                      "delete": true,
+                      "update": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    },
+                    {
+                      "uid": "blt695916e4b4ea8e19",
+                      "read": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    },
+                    {
+                      "uid": "blt597791e20613a95c",
+                      "read": true,
+                      "delete": true,
+                      "update": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    }
+                  ],
+                  "others": {
+                    "read": false,
+                    "create": false,
+                    "delete": false,
+                    "update": false,
+                    "sub_acl": {
+                      "read": false,
+                      "create": false,
+                      "delete": false,
+                      "update": false,
+                      "publish": false
+                    }
+                  }
+                },
+                "options": {
+                  "title": "title",
+                  "is_page": true,
+                  "singleton": false,
+                  "sub_title": [],
+                  "url_prefix": "/blog/",
+                  "url_pattern": "/:title"
+                },
+                "_version": 5,
+                "abilities": {
+                  "create_object": true,
+                  "delete_object": true,
+                  "update_object": true,
+                  "get_one_object": true,
+                  "get_all_objects": true,
+                  "delete_all_objects": true
+                },
+                "created_at": "2023-03-06T18:14:14.199Z",
+                "updated_at": "2023-03-08T03:54:41.801Z",
+                "DEFAULT_ACL": {
+                  "users": [
+                    {
+                      "uid": "blt531d9b3085e4e455",
+                      "read": true,
+                      "sub_acl": {
+                        "read": true
+                      }
+                    }
+                  ],
+                  "others": {
+                    "read": false,
+                    "create": false
+                  }
+                },
+                "description": "It contains blog posts",
+                "inbuilt_class": false,
+                "last_activity": {},
+                "maintain_revisions": true
+              }
+            }
+          }
+        },
+        {
+          "id": "blogFilterByAuthor",
+          "name": "Blog filter by author",
+          "type": "contentstackEntrySelector",
+          "helpText": "",
+          "typeConfig": {
+            "allowedContentTypes": {
+              "author": {
+                "uid": "author",
+                "title": "Author",
+                "schema": [
+                  {
+                    "uid": "title",
+                    "unique": true,
+                    "multiple": false,
+                    "data_type": "text",
+                    "mandatory": true,
+                    "display_name": "Full Name",
+                    "field_metadata": {
+                      "version": 3,
+                      "_default": true
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "picture",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "file",
+                    "dimension": {
+                      "width": {
+                        "max": null,
+                        "min": null
+                      },
+                      "height": {
+                        "max": null,
+                        "min": null
+                      }
+                    },
+                    "mandatory": true,
+                    "display_name": "Picture",
+                    "field_metadata": {
+                      "image": true,
+                      "description": "",
+                      "rich_text_type": "standard"
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "bio",
+                    "format": "",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "text",
+                    "mandatory": false,
+                    "display_name": "Bio",
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "field_metadata": {
+                      "version": 3,
+                      "multiline": true,
+                      "description": "",
+                      "default_value": ""
+                    },
+                    "non_localizable": false
+                  }
+                ],
+                "SYS_ACL": {
+                  "roles": [
+                    {
+                      "uid": "blt8ee017ef4da63633",
+                      "read": true,
+                      "delete": true,
+                      "update": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    },
+                    {
+                      "uid": "blt695916e4b4ea8e19",
+                      "read": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    },
+                    {
+                      "uid": "blt597791e20613a95c",
+                      "read": true,
+                      "delete": true,
+                      "update": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    }
+                  ],
+                  "others": {
+                    "read": false,
+                    "create": false,
+                    "delete": false,
+                    "update": false,
+                    "sub_acl": {
+                      "read": false,
+                      "create": false,
+                      "delete": false,
+                      "update": false,
+                      "publish": false
+                    }
+                  }
+                },
+                "options": {
+                  "title": "title",
+                  "is_page": false,
+                  "singleton": false,
+                  "sub_title": []
+                },
+                "_version": 4,
+                "abilities": {
+                  "create_object": true,
+                  "delete_object": true,
+                  "update_object": true,
+                  "get_one_object": true,
+                  "get_all_objects": true,
+                  "delete_all_objects": true
+                },
+                "created_at": "2023-03-06T18:14:13.853Z",
+                "updated_at": "2023-03-06T18:14:24.119Z",
+                "DEFAULT_ACL": {
+                  "users": [
+                    {
+                      "uid": "blt531d9b3085e4e455",
+                      "read": true,
+                      "sub_acl": {
+                        "read": true
+                      }
+                    }
+                  ],
+                  "others": {
+                    "read": false,
+                    "create": false
+                  }
+                },
+                "description": "It contains blog authors",
+                "inbuilt_class": false,
+                "last_activity": {},
+                "maintain_revisions": true
+              }
+            }
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [],
+      "canBeComposition": false,
+      "created": "2023-03-29T03:54:37.517737+00:00",
+      "updated": "2023-04-05T03:33:57.384227+00:00"
+    },
+    {
+      "id": "hero",
+      "name": "Hero",
+      "icon": "image-text",
+      "parameters": [
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "text",
+          "helpText": "",
+          "typeConfig": {
+            "required": true
+          }
+        },
+        {
+          "id": "heroDatasource",
+          "name": "Hero datasource",
+          "type": "contentstackEntrySelector",
+          "helpText": "",
+          "typeConfig": {
+            "allowedContentTypes": {
+              "hero": {
+                "uid": "hero",
+                "title": "Hero",
+                "schema": [
+                  {
+                    "uid": "title",
+                    "unique": true,
+                    "multiple": false,
+                    "data_type": "text",
+                    "mandatory": true,
+                    "display_name": "Title",
+                    "field_metadata": {
+                      "version": 3,
+                      "_default": true
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "message",
+                    "format": "",
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "text",
+                    "mandatory": false,
+                    "display_name": "Message",
+                    "error_messages": {
+                      "format": ""
+                    },
+                    "field_metadata": {
+                      "version": 3,
+                      "description": "",
+                      "default_value": ""
+                    },
+                    "non_localizable": false
+                  },
+                  {
+                    "uid": "personalization_criteria",
+                    "config": {},
+                    "unique": false,
+                    "multiple": false,
+                    "data_type": "json",
+                    "mandatory": false,
+                    "display_name": "Personalization criteria",
+                    "extension_uid": "blt620903eb50906261",
+                    "field_metadata": {
+                      "extension": true,
+                      "description": "When these conditions are met, this content will be used on the home page."
+                    },
+                    "non_localizable": false
+                  }
+                ],
+                "SYS_ACL": {
+                  "roles": [
+                    {
+                      "uid": "blt8ee017ef4da63633",
+                      "read": true,
+                      "delete": true,
+                      "update": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    },
+                    {
+                      "uid": "blt695916e4b4ea8e19",
+                      "read": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    },
+                    {
+                      "uid": "blt597791e20613a95c",
+                      "read": true,
+                      "delete": true,
+                      "update": true,
+                      "sub_acl": {
+                        "read": true,
+                        "create": true,
+                        "delete": true,
+                        "update": true,
+                        "publish": true
+                      }
+                    }
+                  ],
+                  "others": {
+                    "read": false,
+                    "create": false,
+                    "delete": false,
+                    "update": false,
+                    "sub_acl": {
+                      "read": false,
+                      "create": false,
+                      "delete": false,
+                      "update": false,
+                      "publish": false
+                    }
+                  }
+                },
+                "options": {
+                  "title": "title",
+                  "is_page": false,
+                  "singleton": false,
+                  "sub_title": []
+                },
+                "_version": 3,
+                "abilities": {
+                  "create_object": true,
+                  "delete_object": true,
+                  "update_object": true,
+                  "get_one_object": true,
+                  "get_all_objects": true,
+                  "delete_all_objects": true
+                },
+                "created_at": "2023-03-08T03:55:31.929Z",
+                "updated_at": "2023-03-08T03:57:15.645Z",
+                "DEFAULT_ACL": {
+                  "users": [
+                    {
+                      "uid": "blt531d9b3085e4e455",
+                      "read": true,
+                      "sub_acl": {
+                        "read": true
+                      }
+                    }
+                  ],
+                  "others": {
+                    "read": false,
+                    "create": false
+                  }
+                },
+                "description": "Content used in a banner that appears at the top of a landing page",
+                "inbuilt_class": false,
+                "last_activity": {},
+                "maintain_revisions": true
+              }
+            }
+          }
+        },
+        {
+          "id": "message",
+          "name": "Message",
+          "type": "text",
+          "helpText": "",
+          "typeConfig": null
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [],
+      "titleParameter": "title",
+      "canBeComposition": false,
+      "created": "2023-03-15T21:14:22.837351+00:00",
+      "updated": "2023-03-29T16:49:27.133551+00:00"
+    },
+    {
+      "id": "internalLink",
+      "name": "Internal link",
+      "icon": "screen",
+      "parameters": [
+        {
+          "id": "link",
+          "name": "Link",
+          "type": "link",
+          "helpText": "",
+          "typeConfig": null
+        },
+        {
+          "id": "title",
+          "name": "title",
+          "type": "text",
+          "helpText": "",
+          "typeConfig": {
+            "required": true
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [],
+      "titleParameter": "title",
+      "canBeComposition": false,
+      "created": "2023-04-06T16:24:51.43033+00:00",
+      "updated": "2023-04-06T16:29:23.857245+00:00"
+    },
+    {
+      "id": "page",
+      "name": "Page",
+      "icon": "file-document",
+      "parameters": [
+        {
+          "id": "metaTitle",
+          "name": "Meta Title",
+          "type": "text",
+          "helpText": "",
+          "typeConfig": {
+            "required": true
+          }
+        }
+      ],
+      "useTeamPermissions": true,
+      "slots": [
+        {
+          "id": "content",
+          "name": "Content",
+          "allowedComponents": [
+            "hero",
+            "$personalization",
+            "$test",
+            "$localization",
+            "$loop",
+            "blogList",
+            "internalLink"
+          ],
+          "allowAllComponents": false,
+          "inheritAllowedComponents": false,
+          "patternsInAllowedComponents": false
+        }
+      ],
+      "slugSettings": {
+        "unique": "global",
+        "required": "yes",
+        "regularExpression": "",
+        "regularExpressionMessage": ""
+      },
+      "canBeComposition": true,
+      "created": "2023-03-15T21:14:22.939443+00:00",
+      "updated": "2023-04-06T16:25:15.686866+00:00"
+    }
+  ],
+  "compositions": [
+    {
+      "composition": {
+        "_name": "Algolia configurable components demo",
+        "_id": "11f3133e-153e-44c9-8547-5afb2e2a0f2e",
+        "_slug": "/algolia-demo",
+        "type": "algolia-page",
+        "parameters": {
+          "metaTitle": {
+            "type": "text",
+            "value": "Algolia Configurable Component"
+          }
+        },
+        "slots": {
+          "providers": [
+            {
+              "type": "algolia-instantSearch",
+              "slots": {
+                "widgets": [
+                  {
+                    "type": "algolia-searchBox",
+                    "parameters": {
+                      "searchBoxParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "searchBoxProps": {
+                            "placeholder": "Search for example 1",
+                            "searchAsYouType": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "algolia-refinementList",
+                    "parameters": {
+                      "refinementListParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "refinementListProps": {
+                            "limit": 10,
+                            "operator": "and",
+                            "showMore": false,
+                            "attribute": null,
+                            "searchable": false,
+                            "allowedIndex": null,
+                            "escapeFacetValues": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "algolia-hits",
+                    "slots": {
+                      "hitComponent": [
+                        {
+                          "type": "algolia-hit"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "algolia-pagination",
+                    "parameters": {
+                      "paginationParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "paginationProps": {
+                            "padding": 3,
+                            "showLast": true,
+                            "showNext": true,
+                            "showFirst": true,
+                            "showPrevious": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "instantSearchParams": {
+                  "type": "algolia-components",
+                  "value": {
+                    "instantSearchProps": {
+                      "indexName": null,
+                      "stalledSearchDelay": 200
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "algolia-instantSearch",
+              "slots": {
+                "widgets": [
+                  {
+                    "type": "algolia-basicComponents",
+                    "slots": {
+                      "hitComponent": [
+                        {
+                          "type": "algolia-hit"
+                        }
+                      ]
+                    },
+                    "parameters": {
+                      "searchBoxParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "searchBoxProps": {
+                            "placeholder": "Search for example 2",
+                            "searchAsYouType": true
+                          }
+                        }
+                      },
+                      "paginationParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "paginationProps": {
+                            "padding": 3,
+                            "showLast": true,
+                            "showNext": true,
+                            "showFirst": true,
+                            "showPrevious": true
+                          }
+                        }
+                      },
+                      "refinementListParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "refinementListProps": {
+                            "limit": 10,
+                            "operator": "and",
+                            "showMore": false,
+                            "attribute": null,
+                            "searchable": false,
+                            "escapeFacetValues": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "instantSearchParams": {
+                  "type": "algolia-components",
+                  "value": {
+                    "instantSearchProps": {
+                      "indexName": null,
+                      "stalledSearchDelay": 200
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "algolia-instantSearch",
+              "slots": {
+                "widgets": [
+                  {
+                    "type": "algolia-searchBox",
+                    "parameters": {
+                      "searchBoxParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "searchBoxProps": {
+                            "placeholder": "Search for example 3",
+                            "searchAsYouType": true
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "algolia-index",
+                    "slots": {
+                      "widgets": [
+                        {
+                          "type": "algolia-refinementList",
+                          "parameters": {
+                            "refinementListParams": {
+                              "type": "algolia-components",
+                              "value": {
+                                "refinementListProps": {
+                                  "limit": 10,
+                                  "operator": "and",
+                                  "showMore": false,
+                                  "attribute": null,
+                                  "searchable": false,
+                                  "allowedIndex": null,
+                                  "escapeFacetValues": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "algolia-hits",
+                          "slots": {
+                            "hitComponent": [
+                              {
+                                "type": "algolia-hit"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "algolia-pagination",
+                          "parameters": {
+                            "paginationParams": {
+                              "type": "algolia-components",
+                              "value": {
+                                "paginationProps": {
+                                  "padding": 3,
+                                  "showLast": true,
+                                  "showNext": true,
+                                  "showFirst": true,
+                                  "showPrevious": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "parameters": {
+                      "indexParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "indexProps": {}
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "algolia-index",
+                    "slots": {
+                      "widgets": [
+                        {
+                          "type": "algolia-refinementList",
+                          "parameters": {
+                            "refinementListParams": {
+                              "type": "algolia-components",
+                              "value": {
+                                "refinementListProps": {
+                                  "limit": 10,
+                                  "operator": "and",
+                                  "showMore": false,
+                                  "attribute": null,
+                                  "searchable": false,
+                                  "allowedIndex": null,
+                                  "escapeFacetValues": true
+                                }
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "algolia-hits",
+                          "slots": {
+                            "hitComponent": [
+                              {
+                                "type": "algolia-hit"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "type": "algolia-pagination",
+                          "parameters": {
+                            "paginationParams": {
+                              "type": "algolia-components",
+                              "value": {
+                                "paginationProps": {
+                                  "padding": 3,
+                                  "showLast": true,
+                                  "showNext": true,
+                                  "showFirst": true,
+                                  "showPrevious": true
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "parameters": {
+                      "indexParams": {
+                        "type": "algolia-components",
+                        "value": {
+                          "indexProps": {
+                            "indexName": null
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "instantSearchParams": {
+                  "type": "algolia-components",
+                  "value": {
+                    "instantSearchProps": {
+                      "indexName": null,
+                      "stalledSearchDelay": 200
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "created": "2023-03-29T17:39:14.295314+00:00",
+      "modified": "2023-03-29T17:39:14.295314+00:00",
+      "pattern": false
+    },
+    {
+      "composition": {
+        "_name": "Home",
+        "_id": "26667348-5cd1-4185-b5a0-8413e1e87117",
+        "_slug": "/",
+        "type": "page",
+        "parameters": {
+          "metaTitle": {
+            "type": "text",
+            "value": "Home"
+          }
+        },
+        "slots": {
+          "content": [
+            {
+              "_id": "0bdd8c20-3256-44e3-819d-248de56be1de",
+              "type": "hero",
+              "parameters": {
+                "title": {
+                  "type": "text",
+                  "value": "Hero"
+                },
+                "heroDatasource": {
+                  "type": "contentstackEntrySelector",
+                  "value": {
+                    "entryUid": "blt2bfecc61e6ceff40",
+                    "contentTypeUid": "hero"
+                  }
+                }
+              }
+            },
+            {
+              "_id": "a03adff1-72e2-42fe-a5b4-1ad0bdd3d75d",
+              "type": "internalLink",
+              "parameters": {
+                "link": {
+                  "type": "link",
+                  "value": {
+                    "path": "/blog",
+                    "nodeId": "45f1aaf0-be63-4433-82ec-1ac5ccb95b12",
+                    "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+                  }
+                },
+                "title": {
+                  "type": "text",
+                  "value": "Blog page"
+                }
+              }
+            },
+            {
+              "_id": "9e4ab3b7-eba1-42e2-be39-99dbf36de419",
+              "type": "$personalization",
+              "slots": {
+                "pz": [
+                  {
+                    "_id": "7513ecf0-d9ad-4a6c-8a20-73b6bd27c340",
+                    "type": "hero",
+                    "parameters": {
+                      "title": {
+                        "type": "text",
+                        "value": "We are launched!"
+                      },
+                      "$pzCrit": {
+                        "type": "$pzCrit",
+                        "value": {
+                          "crit": [
+                            {
+                              "l": "launchCampaign",
+                              "r": 0,
+                              "op": ">"
+                            }
+                          ],
+                          "name": "Hero: We are launched!"
+                        }
+                      },
+                      "heroDatasource": {
+                        "type": "contentstackEntrySelector",
+                        "value": {
+                          "entryUid": "blt2bfecc61e6ceff40",
+                          "contentTypeUid": "hero"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "_id": "989e32fa-b595-45e4-ac93-63d0b38708e6",
+                    "type": "hero",
+                    "parameters": {
+                      "title": {
+                        "type": "text",
+                        "value": "Welcome."
+                      },
+                      "heroDatasource": {
+                        "type": "contentstackEntrySelector",
+                        "value": {
+                          "entryUid": "blta4e2aaa065647cdf",
+                          "contentTypeUid": "hero"
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "count": {
+                  "type": "number",
+                  "value": "1"
+                },
+                "trackingEventName": {
+                  "type": "text",
+                  "value": "Home Hero"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "created": "2023-03-15T21:15:32.651191+00:00",
+      "modified": "2023-04-06T16:30:10.406911+00:00",
+      "pattern": false
+    },
+    {
+      "composition": {
+        "_name": "blog",
+        "_id": "5f68d325-f18d-4849-8189-2349a9181d90",
+        "_slug": "test1",
+        "type": "page",
+        "parameters": {
+          "metaTitle": {
+            "type": "text",
+            "value": "Meta"
+          }
+        },
+        "slots": {
+          "content": [
+            {
+              "_id": "fac80e28-1042-49d2-a004-2590fb9e154d",
+              "type": "blogList",
+              "parameters": {
+                "blogs": {
+                  "type": "contentstackQueryEntrySelector",
+                  "value": {
+                    "limit": 2,
+                    "sortBy": "created_at",
+                    "sortOrder": "desc",
+                    "contentType": {
+                      "id": "blog_post",
+                      "name": "Blog Entry"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "_id": "4ac0ed13-ab95-4bbc-b602-5012f0cac6a5",
+              "type": "hero",
+              "parameters": {
+                "title": {
+                  "type": "text",
+                  "value": "Title"
+                },
+                "heroDatasource": {
+                  "type": "contentstackEntrySelector",
+                  "value": {
+                    "entryUid": "blt2bfecc61e6ceff40",
+                    "contentTypeUid": "hero"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "created": "2023-03-16T16:52:17.989647+00:00",
+      "modified": "2023-04-06T16:45:59.45946+00:00",
+      "pattern": false
+    },
+    {
+      "composition": {
+        "_name": "*",
+        "_id": "9e393d3a-0978-4684-86f9-564b8ca94f74",
+        "_slug": "blog-id",
+        "type": "page",
+        "parameters": {
+          "metaTitle": {
+            "type": "text",
+            "value": "Meta title"
+          }
+        },
+        "slots": {
+          "content": [
+            {
+              "_id": "a45d462d-c166-4e00-ac40-79d1eb82e5ee",
+              "type": "hero",
+              "parameters": {
+                "title": {
+                  "type": "text",
+                  "value": "Blog info"
+                },
+                "heroDatasource": {
+                  "type": "contentstackEntrySelector",
+                  "value": {
+                    "entryUid": "blt2bfecc61e6ceff40",
+                    "contentTypeUid": "hero"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "created": "2023-04-04T02:36:28.074731+00:00",
+      "modified": "2023-04-04T02:37:02.49322+00:00",
+      "pattern": false
+    }
+  ],
+  "projectMaps": [
+    {
+      "id": "8a35c419-5150-4f76-aa21-7e4976c9dfcb",
+      "name": "👋 Hello World Starter's Project Map",
+      "default": true
+    }
+  ],
+  "projectMapNodes": [
+    {
+      "id": "2dfaa363-331f-4815-a1ce-62657196a5b7",
+      "name": "Home",
+      "type": "composition",
+      "data": {},
+      "order": 500,
+      "path": "/",
+      "compositionId": "26667348-5cd1-4185-b5a0-8413e1e87117",
+      "pathSegment": "",
+      "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+    },
+    {
+      "id": "45f1aaf0-be63-4433-82ec-1ac5ccb95b12",
+      "name": "blog",
+      "type": "composition",
+      "data": {},
+      "order": 500,
+      "path": "/blog",
+      "compositionId": "5f68d325-f18d-4849-8189-2349a9181d90",
+      "pathSegment": "blog",
+      "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+    },
+    {
+      "id": "d18953ea-a48d-4aed-b14a-c10bb4a71e81",
+      "name": "blog article",
+      "type": "composition",
+      "data": {},
+      "order": 500,
+      "path": "/blog/blog-article-title",
+      "compositionId": "9e393d3a-0978-4684-86f9-564b8ca94f74",
+      "pathSegment": "blog-article-title",
+      "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+    },
+    {
+      "id": "2dfaa363-331f-4815-a1ce-62657196a5b7",
+      "name": "Home",
+      "type": "composition",
+      "data": {},
+      "order": 500,
+      "path": "/",
+      "compositionId": "26667348-5cd1-4185-b5a0-8413e1e87117",
+      "pathSegment": "",
+      "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+    },
+    {
+      "id": "45f1aaf0-be63-4433-82ec-1ac5ccb95b12",
+      "name": "blog",
+      "type": "composition",
+      "data": {},
+      "order": 500,
+      "path": "/blog",
+      "compositionId": "5f68d325-f18d-4849-8189-2349a9181d90",
+      "pathSegment": "blog",
+      "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+    },
+    {
+      "id": "d18953ea-a48d-4aed-b14a-c10bb4a71e81",
+      "name": "blog article",
+      "type": "composition",
+      "data": {},
+      "order": 500,
+      "path": "/blog/blog-article-title",
+      "compositionId": "9e393d3a-0978-4684-86f9-564b8ca94f74",
+      "pathSegment": "blog-article-title",
+      "projectMapId": "8a35c419-5150-4f76-aa21-7e4976c9dfcb"
+    }
+  ]
+}
