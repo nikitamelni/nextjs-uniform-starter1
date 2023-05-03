@@ -1,17 +1,17 @@
 import Link from "next/link";
 import {
-    registerUniformComponent,
-    ComponentProps,
-  } from "@uniformdev/canvas-react";
+  registerUniformComponent,
+  ComponentProps,
+} from "@uniformdev/canvas-react";
 
 type LinkProps = ComponentProps<{
-    title: string;
-    path?: string;
-  }>;
+  link: { path?: string },
+  title: string;
+}>;
 
-export default function InternalLink({ path, title }: LinkProps) {
+export default function InternalLink({ link, title }: LinkProps) {
 
-  const url = path?.length ? path : "#";
+  const url = link?.path?.length ? link?.path : "#";
 
   // render link using Next.js Link Component
   return (
@@ -22,6 +22,6 @@ export default function InternalLink({ path, title }: LinkProps) {
 }
 
 registerUniformComponent({
-    type: "internalLink",
-    component: InternalLink,
+  type: "internalLink",
+  component: InternalLink,
 });
