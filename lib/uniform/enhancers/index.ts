@@ -19,7 +19,7 @@ import {
 
 export default async function runEnhancers(
   composition: any,
-  context: GetStaticPropsContext,
+  context?: GetStaticPropsContext,
 ) {
   const csClient = contentstack.Stack({
     api_key: process.env.CONTENTSTACK_API_KEY,
@@ -31,7 +31,8 @@ export default async function runEnhancers(
   const { preview, params } = context || {};
 
   let itemsPerPage = 2;
-  let itemsToSkip = parseInt(params?.pagenumber) * itemsPerPage;
+ 
+  const itemsToSkip = parseInt(params?.pagenumber as string) * itemsPerPage;
   const queryEnhancer = createContentstackQueryEnhancer({
     client: csClient,
     addEntryQueryOptions: ({ query }) => {

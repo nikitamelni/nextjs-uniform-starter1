@@ -1,4 +1,11 @@
 {
+  "ts-node": {
+    "files": true,
+
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
@@ -21,5 +28,5 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".next", "out", "worker"]
+  "exclude": ["node_modules", ".next", "out", "worker"],
 }
